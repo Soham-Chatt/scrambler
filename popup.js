@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
       scrambleHistory = result.scrambleHistory;
       currentIndex = result.currentIndex;
       updateScrambleDisplay();
-      updateButtons();
     }
   });
 
@@ -39,35 +38,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     browser.storage.local.set({ scrambleHistory: scrambleHistory, currentIndex: currentIndex });
     updateScrambleDisplay();
-    updateButtons();
-  }
-
-  function showPreviousScramble() {
-    if (currentIndex > 0) {
-      currentIndex--;
-      browser.storage.local.set({ currentIndex: currentIndex });
-      updateScrambleDisplay();
-      updateButtons();
-    }
-  }
-
-  function showNextScramble() {
-    if (currentIndex < scrambleHistory.length - 1) {
-      currentIndex++;
-      browser.storage.local.set({ currentIndex: currentIndex });
-      updateScrambleDisplay();
-      updateButtons();
-    } else {
-      generateScramble();
-    }
   }
 
   function updateScrambleDisplay() {
     scrambleElement.innerText = scrambleHistory[currentIndex] || "";
-  }
-
-  function updateButtons() {
-    prevButton.disabled = currentIndex <= 0;
-    nextButton.disabled = currentIndex >= scrambleHistory.length - 1 && scrambleHistory.length > 0;
   }
 });
