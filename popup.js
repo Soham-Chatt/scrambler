@@ -1,15 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
   const scrambleElement = document.getElementById('scramble');
   const generateButton = document.getElementById('generate');
-  const prevButton = document.getElementById('prev');
-  const nextButton = document.getElementById('next');
 
   let scrambleHistory = [];
   let currentIndex = -1;
 
   generateButton.addEventListener('click', generateScramble);
-  prevButton.addEventListener('click', showPreviousScramble);
-  nextButton.addEventListener('click', showNextScramble);
 
   browser.storage.local.get(['scrambleHistory', 'currentIndex']).then((result) => {
     if (result.scrambleHistory && result.currentIndex !== undefined) {
