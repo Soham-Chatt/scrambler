@@ -6,14 +6,19 @@
             font-family: Arial, sans-serif;
             background-color: #121212;
             color: #ffffff;
-            width: 400px;
-            height: 250px;
+            width: 700px;
+            min-height: 120px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 10px;
             box-sizing: border-box;
+            overflow: auto;
+            scrollbar-width: none; /* For Firefox */
+        }
+        body::-webkit-scrollbar {
+            display: none; /* For Chrome, Safari, and Opera */
         }
         #scramble {
             font-size: 24px;
@@ -35,40 +40,12 @@
         button:hover {
             background-color: #45a049;
         }
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            margin-top: 10px;
-        }
-        .nav-button {
-            flex: 1;
-            padding: 10px;
-            font-size: 18px;
-            background-color: #008cba;
-            color: #ffffff;
-            border: none;
-            cursor: pointer;
-            box-sizing: border-box;
-            margin: 0 5px;
-        }
-        .nav-button:hover {
-            background-color: #007bb5;
-        }
-        .nav-button[disabled] {
-            background-color: #555555;
-            cursor: not-allowed;
-        }
     </style>
     <title>Cube Scramble Generator</title>
 </head>
 <body>
 <button id="generate">Scramble</button>
 <div id="scramble"></div>
-<div class="nav-buttons">
-    <button id="prev" class="nav-button">&larr;</button>
-    <button id="next" class="nav-button">&rarr;</button>
-</div>
 <script src="popup.js"></script>
 </body>
 </html>
