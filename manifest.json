@@ -9,9 +9,15 @@
   ],
   "background": {
     "scripts": ["background.js"],
-    "persistent": true
+    "persistent": false
   },
   "browser_action": {
-    "default_title": "Cube Scramble Generator"
+    "default_popup": "popup.html",
+    "default_title": "Cube Scramble Generator",
+    "default_icon": {
+      "16": "icon.svg",
+      "48": "icon.svg",
+      "128": "icon.svg"
+    }
   }
 }

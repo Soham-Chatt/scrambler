@@ -7,10 +7,10 @@ function createPopup() {
     browser.windows.create({
       url: "popup.html",
       type: "popup",
-      width: 250,
-      height: 200,
-      left: screen.availWidth - 260,
-      top: screen.availHeight - 220
+      width: 400,
+      height: 100,
+      left: screen.availWidth - 410,
+      top: screen.availHeight - 120
     }).then(windowInfo => {
       popupWindowId = windowInfo.id;
       browser.windows.onRemoved.addListener(onRemoved);
