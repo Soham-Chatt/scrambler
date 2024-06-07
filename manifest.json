@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Cube Scramble Generator",
+  "version": "1.0",
+  "description": "Generates random Rubik's Cube scrambles.",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_title": "Cube Scramble Generator"
+  }
+}
