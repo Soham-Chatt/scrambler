@@ -20,14 +20,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const modifiers = ["", "'", "2"];
     let scramble = "";
     let lastMove = "";
+    let secondLastMove = "";
 
     for (let i = 0; i < 20; i++) {
-      let move = moves[Math.floor(Math.random() * moves.length)];
-      while (move === lastMove) {
+      let move;
+      do {
         move = moves[Math.floor(Math.random() * moves.length)];
-      }
+      } while (move === lastMove || (lastMove && lastMove === secondLastMove && isOppositeMove(lastMove, move)));
+
       const modifier = modifiers[Math.floor(Math.random() * modifiers.length)];
       scramble += move + modifier + " ";
+      secondLastMove = lastMove;
       lastMove = move;
     }
 
@@ -39,6 +42,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     browser.storage.local.set({ scrambleHistory: scrambleHistory, currentIndex: currentIndex });
     updateScrambleDisplay();
+  }
+
+  function isOppositeMove(move1, move2) {
+    const oppositePairs = {
+      "U": "D",
+      "D": "U",
+      "L": "R",
+      "R": "L",
+      "F": "B",
+      "B": "F"
+    };
+    return oppositePairs[move1] === move2;
   }
 
   function updateScrambleDisplay() {
